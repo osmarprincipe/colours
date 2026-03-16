@@ -1,36 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Osmar Principe 72672</title>
-    
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Osmar Principe 72672</title>
+
+<!-- Import Font Awesome for the button icon -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+/* Remove default margins */
+body{
+    margin:0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Main section that will change background colour */
+#bigSection{
+
+    /* default background colour */
+    background-color:#dbf4e4;
+
+    /* full screen height */
+    height:100vh;
+
+    /* center elements horizontally and vertically */
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+
+/* Style for the black hex display box */
+h2{
+    background:black;
+    color:white;
+    padding:20px 40px;
+    border-radius:5px;
+}
+
+/* Style for the hex code value */
+#boxDisplay{
+    background:green;
+    padding:5px 10px;
+    border-radius:4px;
+}
+
+/* Style the button */
+#btn-colour{
+
+    margin-top:40px;
+
+    padding:15px 35px;
+
+    font-size:18px;
+
+    color:white;
+
+    background:linear-gradient(90deg,#1e3cff,#0008ff);
+
+    border:none;
+
+    border-radius:30px;
+
+    cursor:pointer;
+
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+/* Button hover effect */
+#btn-colour:hover{
+    opacity:0.85;
+}
+
+</style>
+
 </head>
+
 <body>
-<section id = "bigSection">
-    <h2>BackgroundIDColour <span id="boxDisplay"></span></h2>
-    <button id="btn-colour">Click me</button>
+
+<!-- Main container section -->
+<section id="bigSection">
+
+    <!-- Title showing the colour code -->
+    <h2>
+        Background Colour:
+        <span id="boxDisplay">#dbf4e4</span>
+    </h2>
+
+    <!-- Button with Font Awesome icon -->
+    <button id="btn-colour">
+        <i class="fa-solid fa-paint-roller"></i>
+        Click me
+    </button>
+
 </section>
 
 <script>
-    const btnColour = document.getElementById("btn-colour");
-    const boxDisplay = document.getElementById("boxDisplay");
-    const bigSection = document.getElementById("bigSection")
-    btnColour.addEventListener("click", () => {
-        let strHexColour = "#";
-        const arrHex = [0,1,2,3,4,5,6,7,8,9,"A","B","C","D","E","F"];
-        for (let i=0; i < 6;i++){
-            strHexColour += arrHex[getRandomNumber(arrHex.length)];
-        }
-        boxDisplay.innerText = strHexColour;
-        bigSection.style.backgroundColor = strHexColour;
 
-            // Generate random number in range from 0 to max-1
-        function getRandomNumber(max) {
-        return Math.floor(Math.random() * max);
-        }
+/* Get elements from the page */
+const btnColour = document.getElementById("btn-colour");
+const boxDisplay = document.getElementById("boxDisplay");
+const bigSection = document.getElementById("bigSection");
 
-    });
+/* Event listener when the button is clicked */
+btnColour.addEventListener("click", () => {
+
+    /* Start the hex colour string */
+    let strHexColour = "#";
+
+    /* Possible hex values */
+    const arrHex = [0,1,2,3,4,5,6,7,8,9,"A","B","C","D","E","F"];
+
+    /* Generate 6 random hex characters */
+    for (let i=0; i < 6;i++){
+        strHexColour += arrHex[getRandomNumber(arrHex.length)];
+    }
+
+    /* Display the hex colour on screen */
+    boxDisplay.innerText = strHexColour;
+
+    /* Change the section background colour */
+    bigSection.style.backgroundColor = strHexColour;
+
+});
+
+/* Generate random number between 0 and max-1 */
+function getRandomNumber(max) {
+    return Math.floor(Math.random() * max);
+}
+
 </script>
+
 </body>
 </html>
